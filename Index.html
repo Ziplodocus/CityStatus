@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Greetings Fellow Human</title>
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <link rel="icon" type="image/png" href="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <main>
+        <section id="splash">
+            <div class="banner contrast">
+                <h1 id="time">12:00</h1>
+            </div>
+            <div id="greeting-view" class="contrast">
+                <div id="greeting-slider">
+                    <h2>Don't feed the gremlins...</h2>
+                    <h2>...Zzz...</h2>
+                    <h2>...gooood Morning Fellow Human!</h2>
+                    <h2>It's High Noon</h2>
+                    <h2>Good Afternoon Fellow Human!</h2>
+                    <h2>Good Evening Fellow Human</h2>
+                    <h2>Good Night Fellow Humaa... zzz...</h2>
+                </div>
+            </div>
+            <div id="background-filter"></div>
+        </section>
+        <section id="weather-display">
+            <h2 class="contrast">Name a City</h2>
+            <input id="city-input" type="text" class="contrast" placeholder="City name"></textarea>
+            <button id="city-submit" class="contrast">Submit</button>
+            <h3 id="fail-request" class="contrast invisible">I'm sorry, something went wrong :(</h3>
+            <table id="city-weather" class="contrast">
+                <tr>
+                    <td>City</td>
+                    <td id="city">...</td>
+                </tr>
+                <tr>
+                    <td>Weather</td>
+                    <td id="weather">...</td>
+                </tr>
+                <tr>
+                    <td>Temperature</td>
+                    <td id="temperature">...</td>
+                </tr>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/main.js"></script>
+    <script src="./scripts/weather.js"></script>
+    <script src="./scripts/time.js"></script>
+    
+</body>
+
+</html>
