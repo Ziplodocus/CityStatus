@@ -31,10 +31,12 @@ function changeVariable(vari, newVal) {
     return false
 }
 
+
 // Formats a number to be double digit
 function doubleDigit(num) {
     return num < 10 ? num = '0' + num : num
 }
+
 
 // Scrolls between the pages 2 sections
 function scroll(event) {
@@ -65,6 +67,7 @@ function scroll(event) {
     }
 }
 
+
 function intro() {
     let randomTime = () => {
         let hrs = Math.floor(Math.random() * 24);
@@ -76,6 +79,7 @@ function intro() {
         clearInterval(inter);
     }, 950)
 }
+
 
 intro();
 

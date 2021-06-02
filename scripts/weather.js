@@ -36,8 +36,6 @@ function weatherHandle(obj) {
         failure.classList.add('invisible');
     }
 
-
-
     // Extracting response data required for the changes
     const weatherCode = obj.weather[0].icon;
     const weatherDesc = obj.weather[0].description;

@@ -64,6 +64,7 @@ function nightFilter(hrs) {
     changeVariable('--time', brightness);
 }
 
+
 // Returns the hours & minutes for the city
 function tzAdjust() {
     const date = new Date();
@@ -75,6 +76,7 @@ function tzAdjust() {
     if(hrs >= 24) { hrs = hrs % 24 };
     return [hrs, mins]
 }
+
 
 // Takes timezone (ms adjustment from UTC) and parses the hours & minutes
 // and passes it to the functions altering the DOM based on time
