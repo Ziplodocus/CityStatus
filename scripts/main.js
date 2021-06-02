@@ -9,6 +9,8 @@ const weather = document.getElementById('weather');
 const temperature = document.getElementById('temperature');
 const root = document.querySelector(':root');
 const time = document.getElementById('time');
+const icon = document.getElementById('icon');
+const title = document.querySelector('title');
 
 // initial tracker values
 let greetingPos = 0;

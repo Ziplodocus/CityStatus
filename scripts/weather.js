@@ -45,7 +45,11 @@ function weatherHandle(obj) {
     const weatherTemp = 1 + (dispTemp - 16)/40;
     const dispCity = `${obj.name}, ${obj.sys.country}`;
     const dispWeather = document.createElement('img');
+    const iconURL = `http://openweathermap.org/img/wn/${weatherCode}@2x.png`
     
+    title.innerHTML = obj.name + ' Status';
+    icon.setAttribute('href', iconURL);
+
     // Weather changes to splash screens background image
     changeVariable('--weather-temp', weatherTemp);
     changeVariable('--weather-clouds', weatherClouds);
@@ -54,7 +58,7 @@ function weatherHandle(obj) {
     // Making changes to City Weather display
     city.innerHTML = dispCity;
     weather.innerHTML = weatherDesc.charAt(0).toUpperCase() + weatherDesc.slice(1);
-    weather.appendChild(dispWeather).setAttribute('src',`http://openweathermap.org/img/wn/${weatherCode}@2x.png`);
+    weather.appendChild(dispWeather).setAttribute('src', iconURL);
     temperature.innerHTML = dispTemp + ' Celsius';
 
     //Changes timezone variable to the tz of the current city (for time.js)
