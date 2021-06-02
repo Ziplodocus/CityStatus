@@ -11,6 +11,8 @@ const root = document.querySelector(':root');
 const time = document.getElementById('time');
 const icon = document.getElementById('icon');
 const title = document.querySelector('title');
+const navDown = document.querySelector('.down');
+const navUp = document.querySelector('.up');
 
 // initial tracker values
 let greetingPos = 0;
@@ -38,11 +40,16 @@ function doubleDigit(num) {
 function scroll(event) {
     let change = '';
 
+    // For button press, direction is determined.
+    let down;
+    let up;
+    event.target.classList.contains('down') ? down = true : up = true;
+
     //Determines direction of the scroll and translates the body
-    if (event.deltaY > 1) {
+    if (event.deltaY > 0 || down) {
         change = changeVariable('--page-position', '-100vh')  
     }
-    else if (event.deltaY < -1) {
+    else if (event.deltaY < 0 || up) {
         change = changeVariable('--page-position', '0');
     }
     else {
@@ -72,4 +79,6 @@ function intro() {
 
 intro();
 
+navUp.addEventListener('click', scroll);
+navDown.addEventListener('click', scroll);
 document.addEventListener('wheel', scroll);

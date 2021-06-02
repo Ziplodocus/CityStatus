@@ -20,6 +20,30 @@
     background-color: var(--raisin-black-80);
 }
 
+.nav {
+    position: absolute;
+    left: auto;
+    right: auto;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--gainsboro-80);
+    opacity: 0.3;
+    cursor: pointer;
+    z-index: 2;
+    transition: opacity 300ms;
+}
+    .nav:hover {
+        opacity: 1;
+    }
+
+.up {
+    top: 101vh;
+    transform: rotate(180deg);
+}
+
+.down {
+    bottom: 1vh;
+}
 /* Variable declarations*/
 :root {
     /*main colors*/
