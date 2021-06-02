@@ -36,8 +36,9 @@ function weatherHandle(obj) {
         failure.classList.add('invisible');
     }
 
+
+
     // Extracting response data required for the changes
-    const weatherType = obj.weather[0].main;
     const weatherCode = obj.weather[0].icon;
     const weatherDesc = obj.weather[0].description;
     const weatherClouds = obj.clouds.all/2 + '%';
@@ -46,7 +47,12 @@ function weatherHandle(obj) {
     const dispCity = `${obj.name}, ${obj.sys.country}`;
     const dispWeather = document.createElement('img');
     const iconURL = `http://openweathermap.org/img/wn/${weatherCode}@2x.png`
+
+    // Extracts main weather type, if extreme then assigned as other
+    let weatherType;
+    obj.weather[0].id.toString().charAt(0) === '7' ? weatherType = 'Other': weatherType = obj.weather[0].main;
     
+    // Makes title and icon in tab relevant
     title.innerHTML = obj.name + ' Status';
     icon.setAttribute('href', iconURL);
 

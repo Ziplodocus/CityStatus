@@ -1,13 +1,16 @@
 
+/*Importing fonts from google fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
+/*Resetting default margins and padding*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/*Utility classes*/
 .invisible {
     display: none;
 }
@@ -17,18 +20,23 @@
     background-color: var(--raisin-black-80);
 }
 
+/* Variable declarations*/
 :root {
+    /*main colors*/
+    --raisin-black-80: hsla(260, 7%, 16%, 80%);
+    --raisin-black: hsla(260, 7%, 16%, 1);
+    --gainsboro: hsla(276, 8%, 88%, 1);
+    --gainsboro-80: hsla(276, 8%, 88%, 80%);
+
+
+    /* Dynamically altered variables*/
     --time: 0;
     --weather-temp: 0%;
     --weather-clouds: 0%;
     --page-position: 0;
     --greeting-position: 0;
-    --raisin-black-80: hsla(260, 7%, 16%, 80%);
-    --raisin-black: hsla(260, 7%, 16%, 1);
-    --neon-blue: hsla(240, 100%, 75%, 1);
-    --magic-mint: hsla(153, 86%, 81%, 1);
-    --mystic: hsla(341, 61%, 59%, 1);
-    --gainsboro: hsla(276, 8%, 88%, 1);
+    
+    /* Background images associated with corresponding weather*/
     --Thunderstorm: url('./resources/Thunderstorm.jpg'); /*Photo by Ayu Shakya from Pexels*/
     --Drizzle: url('./resources/Drizzle.jpg'); /*Photo by Sitthan Kutty from Pexels*/
     --Rain: url('./resources/Rain.jpg'); /*Photo by Rodrigo Souza from Pexels*/
@@ -37,9 +45,9 @@
     --Other: url('./resources/Other.jpg'); /*Photo by Pedro Figueras from Pexels*/
     --Clouds: url('./resources/Clouds.jpg'); /*Photo by Stanislav Kondratiev from Pexels*/
     --Map: url('./resources/Map.jpg'); /*Photo by Filippo Peisino from Pexels*/
-
 }
 
+/* Styles in relative order of structure*/
 body {
     height: 100vh;
     overflow-y: hidden;
@@ -107,17 +115,17 @@ body {
                 align-items: center;
 }
 
-#weather-display  {
+#city-display  {
     margin: 8vh 0;
     padding: 8vh 0;
     height: 84vh;
-    background-color: var(--neon-blue);
+    background-color: var(--gainsboro);
     background-image: var(--Map);
     background-position: center;
     background-size: cover;
     overflow: hidden;
     }
-    #weather-display h2 {
+    #city-display h2 {
         font-size: 2.5rem;
     }
     #city-input {
@@ -137,6 +145,7 @@ body {
         }
         #city-input:focus {
             border-width: 4px;
+            outline: none;
         }
     #city-submit {
         margin: 0 auto;
@@ -165,24 +174,29 @@ body {
         max-width: 600px;
         border-radius: 5px;
         max-height: 50vh;
+        border-collapse: collapse;
     }
+        #city-weather tr:nth-of-type(2n) {
+            border-top: 3px solid var(--raisin-black-80);
+            border-bottom: 3px solid var(--raisin-black-80);
+        }
         #city-weather td {
             padding: 0.4em;
             text-align: center;
         }
-        #weather img {
-            display: block;
-            margin: auto;
-            height: 2em;
+            #weather img {
+                display: block;
+                margin: 0 auto;
+                height: 2em;
 }
 
-
+/* Fixes some elements overlapping on very small screen sizes*/
 @media only screen and (max-height: 550px), only screen and (max-width: 510px) and (max-height: 630px) {
-    #weather-display {
+    #city-display {
         font-size: 18px;
         padding: 2vh;
     }
-    #weather-display h2 {
+    #city-display h2 {
         font-size: 2rem;
     }
 }
