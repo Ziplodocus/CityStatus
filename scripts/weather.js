@@ -10,7 +10,7 @@ with cloud percentage.
 /* Creates a request to the openweather api which returns weather data
 as json, and is used to update the DOM with weatherChanges function */
 function weatherChanges(city) {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0bda57222292439b34a797a110b8a1ac`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0bda57222292439b34a797a110b8a1ac`;
     const req = new XMLHttpRequest();
     req.responseType = 'json';
     req.open('GET', url);
@@ -44,7 +44,7 @@ function weatherHandle(obj) {
     const weatherTemp = 1 + (dispTemp - 16)/40;
     const dispCity = `${obj.name}, ${obj.sys.country}`;
     const dispWeather = document.createElement('img');
-    const iconURL = `http://openweathermap.org/img/wn/${weatherCode}@2x.png`
+    const iconURL = `https://openweathermap.org/img/wn/${weatherCode}@2x.png`
 
     // Extracts main weather type, if extreme then assigned as other
     let weatherType;
