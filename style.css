@@ -62,7 +62,7 @@ body {
     width: 100%;
     backdrop-filter: saturate(var(--weather-temp)) brightness(var(--time)) grayscale(var(--weather-clouds));
     z-index: 1;
-    transition: backdrop-filter 2s;
+    transition: backdrop-filter 5s;
 }
 
 #splash {

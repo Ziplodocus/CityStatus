@@ -59,8 +59,8 @@ function setTime(hrs, mins) {
 
 // Applies a brightness background filter dependant on time of day
 function nightFilter(hrs) {
-    let scale = (hrs-12) * 0.85/12;
-    let brightness = 1.1 - (Math.abs(scale));
+    let scale = (hrs-12) * 1.2/12;
+    let brightness = 1.4 - (Math.abs(scale));
     changeVariable('--time', brightness);
 }
 
