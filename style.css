@@ -38,7 +38,8 @@
     .nav:active {
         opacity: 0.1;
         transition: opacity 100ms;
-    }
+}
+
 .up {
     top: 101vh;
     transform: rotate(180deg);
