@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
+
 /* Resetting default margins and padding*/
 * {
     margin: 0;
@@ -10,7 +11,29 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 20px;
+    font-family: 'Comfortaa';
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: var(--gainsboro);
+}
+
+
 /* Utility classes*/
+.height-screen {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.fail-request {
+    margin: 1rem 0;
+    font-size: 0.8rem;
+}
+
 .invisible {
     display: none;
 }
@@ -20,11 +43,22 @@
     background-color: var(--raisin-black-80);
 }
 
-/* Classses for the nav buttons*/
+.content-box {
+    display: block;
+    margin: 1rem auto;
+    min-width: 15rem;
+    width: 60vw;
+    max-width: 30rem;
+    border-radius: 0.25rem;
+    text-align: center; 
+}
+
 .nav {
     position: absolute;
-    left : calc(50vw - 3vh);
+    left : calc(50% - 3vh);
+    min-width: 2rem;
     width: 6vh;
+    max-width: 3rem;
     border-radius: 50%;
     background-color: var(--gainsboro-80);
     opacity: 0.4;
@@ -40,14 +74,24 @@
         transition: opacity 100ms;
 }
 
-.up {
+.nav-up {
     top: 101vh;
     transform: rotate(180deg);
 }
 
-.down {
+.nav-down {
     bottom: 1vh;
 }
+
+.background-filter {
+    position: absolute;
+    top:0;
+    width: 100%;
+    backdrop-filter: saturate(var(--weather-temp)) brightness(var(--time)) grayscale(var(--weather-clouds));
+    z-index: 1;
+    transition: backdrop-filter 5s;
+}
+
 /* Variable declarations*/
 :root {
     /* Main colors*/
@@ -75,162 +119,145 @@
     --Map: url('./resources/Map.jpg'); /*Photo by Filippo Peisino from Pexels*/
 }
 
-/* Styles in relative order of structure*/
+
+/* element styling */
 body {
     height: 100vh;
+    min-width: 300px;
     overflow-y: hidden;
     transform: translateY(var(--page-position));
     background-color: var(--raisin-black);
-    transition: transform 1s cubic-bezier(0.6, 0.2, 0.735, 0.045);
-    color: var(--gainsboro);
-    font-family: 'Comfortaa';
-    font-size: 22px;
-    line-height: 1.5;
-    letter-spacing: 0.02em;
-    text-align: center;
-    color: var(--gainsboro);
+    transition: transform 1s cubic-bezier(0.6, 0.2, 0.735, 0.045);    
 }
 
-#background-filter {
-    position: absolute;
-    top:0;
-    height: 100vh;
-    width: 100%;
-    backdrop-filter: saturate(var(--weather-temp)) brightness(var(--time)) grayscale(var(--weather-clouds));
-    z-index: 1;
-    transition: backdrop-filter 5s;
-}
-
-/* First 'page'*/
-#splash {
-    height: 100vh;
-    background-image: '';
+section {
+    margin: 8vh 0;
+    padding: 4vh 0;
+    height: 88vh;
+    background-color: var(--gainsboro);
     background-position: center;
     background-size: cover;
+}
+    section h1 {
+        font-size: 2.5rem;
     }
-    .banner {
-        position: absolute;
-        top: 15vh;
-        width: 100%;
-        z-index: 2;
-        }
-        .banner h1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Odibee sans', sans;
-            font-weight: bold;
-            font-size: min(30vh, 40vw);
-            letter-spacing: 0.03em;
-            line-height: 1.2;
+
+
+/* Structure relative styling */
+
+/* First 'page'*/
+.home {
+    background-image: ''/* set via js */;
+    user-select: none;
     }
-    #greeting-view {
-        position: absolute;
-        top: 60vh;
-        height: 20vh;
-        width: 100%;
-        overflow-y: hidden;
-        z-index: 2;
-        }
-        #greeting-slider {
-            transform: translateY(var(--greeting-position));
-            transition: transform 1s ease-in-out;
-        }
-            #greeting-slider h2 {
-                height: 20vh;
-                line-height: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+.home-banner {
+    position: absolute;
+    top: 15vh;
+    width: 100%;
+    z-index: 2;
+    }
+.home-banner-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Odibee sans', sans;
+    font-size: min(35vh, 50vw);
+    line-height: 1;
+}
+
+.home-greeting {
+    position: absolute;
+    top: 60vh;
+    height: 8rem;
+    width: 100%;
+    overflow: hidden;
+    z-index: 2;
+    }
+.home-greeting-slider {
+    transform: translateY(var(--greeting-position));
+    transition: transform 1s ease-in-out;
+    }
+    .home-greeting-slider h2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 8rem;
+        font-size: 2rem;
+        line-height: 1;
 }
 
 /* Second 'page'*/
-#city-display  {
-    margin: 8vh 0;
-    padding: 8vh 0;
-    height: 84vh;
-    background-color: var(--gainsboro);
+.second-page  {
     background-image: var(--Map);
-    background-position: center;
-    background-size: cover;
-    overflow: hidden;
+}
+
+.city-input {
+    height: 3rem;
+    border-width: 0;
+    font-size: 1.5rem;
+    transition: border-width 200ms;
+}
+    .city-input:hover {
+        border-width: 0.1rem;
     }
-    #city-display h2 {
-        font-size: 2.5rem;
+    .city-input:focus {
+        border-width: 0.2rem;
+        outline: none;
     }
-    #city-input {
-        display: block;
-        margin: 3vh auto;
-        height: 3rem;
-        width: max(300px, 60%);
-        max-width: 600px;
-        border-width: 0;
-        border-radius: 5px;
-        font-size: 2rem;
-        text-align: center; 
-        transition: 200ms;
+
+.city-submit {
+    height: 2rem;
+    border-width: 0;
+    font-size: 1rem;
+    transition: border-width 200ms;
+    cursor: pointer;
+}
+    .city-submit:hover {
+        border-width: 0.1rem;
     }
-        #city-input:hover {
-            border-width: 2px;
-        }
-        #city-input:focus {
-            border-width: 4px;
-            outline: none;
-        }
-    #city-submit {
-        margin: 0 auto;
-        width: max(300px, 60%);
-        max-width: 600px;
-        height: 2rem;
-        border-width: 0;
-        border-radius: 5px;
-        font-size: 1rem;
-        transition: 200ms;
-        cursor: pointer;
+    .city-submit:active {
+        border-width: 0.2rem;
     }
-        #city-submit:hover {
-            border-width: 2px;
-        }
-        #city-submit:active {
-            border-width: 4px;
-        }
-    #fail-request {
-        margin: 1vh 0;
-        font-size: 20px;
+
+.weather-table {
+    display: table;
+    border-collapse: collapse;
     }
-    #city-weather {
-        margin: 3vh auto;
-        width: max(300px, 60%);
-        max-width: 600px;
-        border-radius: 5px;
-        max-height: 50vh;
-        border-collapse: collapse;
+    .weather-table tr:nth-of-type(2n) {
+        border-top: 0.15rem solid var(--raisin-black-80);
+        border-bottom: 0.15rem solid var(--raisin-black-80);
     }
-        #city-weather tr:nth-of-type(2n) {
-            border-top: 3px solid var(--raisin-black-80);
-            border-bottom: 3px solid var(--raisin-black-80);
-        }
-        #city-weather td {
-            padding: 0.4em;
-            text-align: center;
-        }
-            #weather img {
-                display: block;
-                margin: 0 auto;
-                height: 2em;
+    .weather-table td {
+        padding: 0.4rem;
+        text-align: center;
+    }
+        .weather-table img {
+            display: block;
+            margin: 0 auto;
+            height: 4rem;
 }
 
 /* Fixes some elements overlapping on very small screen sizes*/
-@media only screen and (max-height: 550px), only screen and (max-width: 510px) and (max-height: 630px) {
-    #greeting-slider h2 {
-        font-size: 1.6rem;
-    }
-
-    #city-display {
+@media only screen and (max-height: 590px), only screen and (max-width: 325px) and (max-height: 690px) {
+    html {
         font-size: 18px;
-        padding: 2vh;
     }
-    #city-display h2 {
+}
+
+@media only screen and (max-height: 515px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-height: 430px) {
+    html {
+        font-size: 12px;
+    }
+    .home-greeting-slider h2 {
         font-size: 2rem;
+    }
+    .second-page {
+        overflow-y: scroll;
     }
 }

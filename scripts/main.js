@@ -1,28 +1,19 @@
 
-//Global variables to be used and manipulated in script files
-const splashScreen = document.getElementById('splash');
-const citySubmit = document.getElementById('city-submit');
-const cityInput = document.getElementById('city-input');
-const failure = document.getElementById('fail-request');
-const city = document.getElementById('city');
-const weather = document.getElementById('weather');
-const temperature = document.getElementById('temperature');
-const root = document.querySelector(':root');
-const time = document.getElementById('time');
-const icon = document.getElementById('icon');
-const title = document.querySelector('title');
-const navDown = document.querySelector('.down');
-const navUp = document.querySelector('.up');
+// Elements requiring event handlers and input to be cleared after request complete
+const navDown = document.querySelector('.nav-down');
+const navUp = document.querySelector('.nav-up');
+const cityInput = document.querySelector('.city-input');
+const citySubmit = document.querySelector('.city-submit');
 
 // initial tracker values
 let greetingPos = 0;
 let timeZoneAdjustment = 0;
 
-
 // Changes the value of a CSS variable declared in :root
 // only if it needs to be changed.
 // returns true if the value has been changed and false if not
 function changeVariable(vari, newVal) {
+    const root = document.querySelector(':root');
     const varVal = getComputedStyle(root).getPropertyValue(vari);
     if(newVal !== varVal) {
         root.style.setProperty(vari, newVal);
@@ -44,14 +35,14 @@ function scroll(event) {
 
     // For button press, direction is determined.
     let down;
-    let up;
-    event.target.classList.contains('down') ? down = true : up = true;
+    
+    event.target.classList.contains('nav-down') ? down = true : down = false;
 
     //Determines direction of the scroll and translates the body
     if (event.deltaY > 0 || down) {
         change = changeVariable('--page-position', '-100vh')  
     }
-    else if (event.deltaY < 0 || up) {
+    else if (event.deltaY < 0 || !down) {
         change = changeVariable('--page-position', '0');
     }
     else {

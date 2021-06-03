@@ -25,15 +25,17 @@ function weatherChanges(city) {
 // filters associated with the current weather in that city
 function weatherHandle(obj) {
     // If request is not succesful, an error message appears on the DOM
-    if(obj.cod !== 200 && failure.classList.contains('invisible')) {
-        failure.classList.remove('invisible')
+    const failedRequest = document.querySelector('.fail-request');
+    const isInvisible = failedRequest.classList.contains('invisible');
+    if(obj.cod !== 200 && isInvisible) {
+        failedRequest.classList.remove('invisible')
         return false
     }
-    else if (obj.cod !== 200 && !failure.classList.contains('invisible')) {
+    else if (obj.cod !== 200 && !isInvisible) {
         return false
     }
-    else if (!failure.classList.contains('invisible')) {
-        failure.classList.add('invisible');
+    else if (!isInvisible) {
+        failedRequest.classList.add('invisible');
     }
 
     // Extracting response data required for the changes
@@ -46,24 +48,35 @@ function weatherHandle(obj) {
     const dispWeather = document.createElement('img');
     const iconURL = `https://openweathermap.org/img/wn/${weatherCode}@2x.png`
 
+    // Defining DOM elemnents to change
+    const tabIcon = document.querySelector('link[rel="icon"]');
+    const tabTitle = document.querySelector('title');
+    const home = document.querySelector('.home');
+
     // Extracts main weather type, if extreme then assigned as other
     let weatherType;
     obj.weather[0].id.toString().charAt(0) === '7' ? weatherType = 'Other': weatherType = obj.weather[0].main;
     
     // Makes title and icon in tab relevant
-    title.innerHTML = obj.name + ' Status';
-    icon.setAttribute('href', iconURL);
+    
+    tabTitle.innerHTML = obj.name + ' Status';
+    tabIcon.setAttribute('href', iconURL);
 
     // Weather changes to splash screens background image
     changeVariable('--weather-temp', weatherTemp);
     changeVariable('--weather-clouds', weatherClouds);
-    splashScreen.style.setProperty('background-image', `var(--${weatherType})`);
+    home.style.setProperty('background-image', `var(--${weatherType})`);
+
+    // Grabbing table element data cells
+    const tableCity = document.querySelector('.weather-table-city');
+    const tableWeather = document.querySelector('.weather-table-weather');
+    const tableTemperature = document.querySelector('.weather-table-temperature');
 
     // Making changes to City Weather display
-    city.innerHTML = dispCity;
-    weather.innerHTML = weatherDesc.charAt(0).toUpperCase() + weatherDesc.slice(1);
-    weather.appendChild(dispWeather).setAttribute('src', iconURL);
-    temperature.innerHTML = dispTemp + ' Celsius';
+    tableCity.innerHTML = dispCity;
+    tableWeather.innerHTML = weatherDesc.charAt(0).toUpperCase() + weatherDesc.slice(1);
+    tableWeather.appendChild(dispWeather).setAttribute('src', iconURL);
+    tableTemperature.innerHTML = dispTemp + ' Celsius';
 
     //Changes timezone variable to the tz of the current city (for time.js)
     timeZoneAdjustment = obj.timezone;

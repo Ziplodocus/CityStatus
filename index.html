@@ -5,7 +5,7 @@
 <head>
     <title>Norwich Info</title>
     <link rel="stylesheet" href="./style.css" type="text/css">
-    <link id="icon" rel="icon" type="image/png">
+    <link rel="icon" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -13,12 +13,12 @@
     
     <main>
         
-        <section id="splash">
-            <div class="banner contrast">
-                <h1 id="time">12:00</h1>
+        <section class="home height-screen">
+            <div class="home-banner contrast">
+                <h1 class="home-banner-text">12:00</h1>
             </div>
-            <div id="greeting-view" class="contrast">
-                <div id="greeting-slider">
+            <div class="home-greeting contrast">
+                <div class="home-greeting-slider">
                     <h2>Don't feed the gremlins...</h2>
                     <h2>...Zzz...</h2>
                     <h2>...gooood Morning Fellow Human!</h2>
@@ -28,29 +28,29 @@
                     <h2>Good night fellow humaa... zzz...</h2>
                 </div>
             </div>
-            <img class="nav down" src="./resources/navArrow.svg" type="image/svg" alt="Clickable arrow to scroll down">
-            <div id="background-filter"></div>
+            <img class="nav nav-down" src="./resources/navArrow.svg" type="image/svg" alt="Clickable arrow to scroll down">
+            <div class="background-filter height-screen"></div>
         </section>
-        <section id="city-display">
-            <img class="nav up" src="./resources/navArrow.svg"  type="image/svg"alt="Clickable arrow to scroll up">
-            <h2 class="contrast">Name a City</h2>
-            <input id="city-input" type="text" class="contrast" placeholder="City name"></textarea>
-            <button id="city-submit" class="contrast">Submit</button>
-            <h3 id="fail-request" class="contrast invisible">I'm sorry, something went wrong :(</h3>
-            <table id="city-weather">
-                <tr  class="contrast">
+        <section class="second-page">
+            <img class="nav nav-up" src="./resources/navArrow.svg"  type="image/svg" alt="Clickable arrow to scroll up">
+            <h1 class="contrast">Name a City</h1>
+            <input class="city-input contrast content-box" type="text" placeholder="City name"></textarea>
+            <button class="city-submit contrast content-box">Submit</button>
+            <h3 class="fail-request contrast invisible">I'm sorry, something went wrong :(</h3>
+            <table class="weather-table contrast content-box">
+                <tr>
                     <td>City</td>
-                    <td id="city">...</td>
+                    <td class="weather-table-city">...</td>
                 </tr>
-                <tr  class="contrast">
+                <tr>
                     <td>Weather</td>
-                    <td id="weather">...</td>
+                    <td class="weather-table-weather">...</td>
                 </tr>
-                <tr  class="contrast">
+                <tr>
                     <td>Temperature</td>
-                    <td id="temperature">...</td>
+                    <td class="weather-table-temperature">...</td>
                 </tr>
-            </div>
+            </table>
         </section>
     </main>
 

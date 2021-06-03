@@ -7,8 +7,9 @@ and applys greyscale to the background image depending on time of day
 //determines which greeting is to be displayed based on time of day;
 function setGreeting(hrs, mins) {
 
-    //Represents height of the text and viewing window (vh)
-    let viewHeight = 20;
+    //Represents height of the text and viewing window
+
+    let viewHeight = 8//rem;
 
     let position;
     switch (true) {
@@ -36,7 +37,7 @@ function setGreeting(hrs, mins) {
     }
 
     if(position !== greetingPos) {
-        changeVariable('--greeting-position', position * viewHeight + 'vh')
+        changeVariable('--greeting-position', position * viewHeight + 'rem')
     }
 
     // Tracks current position
@@ -51,8 +52,10 @@ function setTime(hrs, mins) {
     mins = doubleDigit(mins);
     const timeOfDay = hrs + ':' + mins;
 
-    if(timeOfDay !== time.innerHTML) {
-        time.innerHTML = timeOfDay;
+    const homeTime = document.querySelector('.home-banner-text');
+
+    if(timeOfDay !== homeTime.innerHTML) {
+        homeTime.innerHTML = timeOfDay;
     }
 }
 
