@@ -1,16 +1,16 @@
 
-/*Importing fonts from google fonts*/
+/* Importing fonts from google fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
-/*Resetting default margins and padding*/
+/* Resetting default margins and padding*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/*Utility classes*/
+/* Utility classes*/
 .invisible {
     display: none;
 }
@@ -20,22 +20,25 @@
     background-color: var(--raisin-black-80);
 }
 
+/* Classses for the nav buttons*/
 .nav {
     position: absolute;
-    left: auto;
-    right: auto;
-    height: 3rem;
+    left : calc(50vw - 3vh);
+    width: 6vh;
     border-radius: 50%;
     background-color: var(--gainsboro-80);
-    opacity: 0.3;
+    opacity: 0.4;
     cursor: pointer;
     z-index: 2;
-    transition: opacity 300ms;
+    transition: opacity 800ms;
 }
     .nav:hover {
         opacity: 1;
     }
-
+    .nav:active {
+        opacity: 0.1;
+        transition: opacity 100ms;
+    }
 .up {
     top: 101vh;
     transform: rotate(180deg);
@@ -46,7 +49,7 @@
 }
 /* Variable declarations*/
 :root {
-    /*main colors*/
+    /* Main colors*/
     --raisin-black-80: hsla(260, 7%, 16%, 80%);
     --raisin-black: hsla(260, 7%, 16%, 1);
     --gainsboro: hsla(276, 8%, 88%, 1);
@@ -97,6 +100,7 @@ body {
     transition: backdrop-filter 5s;
 }
 
+/* First 'page'*/
 #splash {
     height: 100vh;
     background-image: '';
@@ -139,6 +143,7 @@ body {
                 align-items: center;
 }
 
+/* Second 'page'*/
 #city-display  {
     margin: 8vh 0;
     padding: 8vh 0;
@@ -216,6 +221,10 @@ body {
 
 /* Fixes some elements overlapping on very small screen sizes*/
 @media only screen and (max-height: 550px), only screen and (max-width: 510px) and (max-height: 630px) {
+    #greeting-slider h2 {
+        font-size: 1.6rem;
+    }
+
     #city-display {
         font-size: 18px;
         padding: 2vh;
