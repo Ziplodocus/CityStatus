@@ -161,7 +161,7 @@ section {
     justify-content: center;
     align-items: center;
     font-family: 'Odibee sans', sans;
-    font-size: min(35vh, 50vw);
+    font-size: min(35vh, 45vw);
     line-height: 1;
 }
 
